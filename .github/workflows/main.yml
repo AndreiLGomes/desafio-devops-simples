@@ -1,0 +1,30 @@
+# Nome do seu workflow (aparecerá na aba Actions)
+name: Automação de Deploy Simples
+
+# Gatilho: Define QUANDO a automação deve rodar
+# Neste caso, ao fazer 'push' na branch 'main'
+on:
+  push:
+    branches: [ main ]
+
+# Tarefas: Define O QUE a automação deve fazer
+jobs:
+  # Nome da única tarefa que teremos
+  build-e-deploy:
+    # Define o tipo de máquina virtual que executará os comandos
+    runs-on: ubuntu-latest
+
+    # Passos (steps) que serão executados em sequência
+    steps:
+      # 1. Primeiro passo: Copia o código do seu repositório para a máquina virtual
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # 2. Segundo passo: Simula um "build" ou "deploy"
+      #    Aqui, apenas exibimos uma mensagem na tela.
+      - name: Executa o comando de deploy
+        run: echo "🚀 Deploy bem-sucedido!"
+
+      # 3. Terceiro passo: Gera uma mensagem de sucesso no final do pipeline
+      - name: Confirmação final
+        run: echo "✅ Pipeline concluído com sucesso."
